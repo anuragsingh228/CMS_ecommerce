@@ -25,6 +25,9 @@ app.set('view engine', 'ejs');
 //set public folder
 app.use(express.static(path.join(__dirname, 'public')));
 
+//set global error variable
+app.locals.errors = null;
+
 //body parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
