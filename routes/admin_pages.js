@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 //Get Page model
-var Page = require('../models/page')
+var { Page } = require('../models/page')
 
 /* 
 *GET pages index
@@ -82,6 +82,22 @@ router.post('/add-page', function (req, res) {
 
 });
 
-//Exports
+/* 
+*POST reoder pages 
+*/
+router.post('/reorder-pages', function (req, res) {
+    var ids = req.body['id[]'];
+    var count = 0;
+    ids.forEach((id) => {
+        count++;
+        Page.findById(id, function (err, page) {
+            page.sorting = count;
+            page.save(function (err) {
+                if (err) return console.log(err);
+            });
+        });
+    })
+});
 
+//Exports
 module.exports = router;
