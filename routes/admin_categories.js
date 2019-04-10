@@ -1,32 +1,30 @@
 var express = require('express');
 var router = express.Router();
 
-//Get Page model
-var { Page } = require('../models/page')
+//Get Category model
+var { Category } = require('../models/category');
 
 /* 
-*GET pages index
+*GET category index
 */
 router.get('/', function (req, res) {
-    Page.find({}).sort({ sorting: 1 }).exec(function (err, pages) {
-        res.render('admin/pages', {
-            pages: pages
+
+    Category.find(function (err, categories) {
+        if (err) return console.log(err);
+        res.render('admin/categories', {
+            categories: categories
         });
     });
 });
 
 /* 
-*GET add page
+*GET add category
 */
-router.get('/add-page', function (req, res) {
+router.get('/add-category', function (req, res) {
     var title = "";
-    var slug = "";
-    var content = "";
 
-    res.render('admin/add_page', {
-        title: title,
-        slug: slug,
-        content: content
+    res.render('admin/add_category', {
+        title: title
     });
 
 });

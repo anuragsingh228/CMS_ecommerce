@@ -35,9 +35,9 @@ app.use(bodyParser.json());
 //express session middleware
 app.use(session({
     secret: 'keyboard cat',
-    resave: false,
+    resave: true,
     saveUninitialized: true,
-    cookie: { secure: true }
+    // cookie: { secure: true }
 }))
 
 //express validator middleware
@@ -68,8 +68,10 @@ app.use(function (req, res, next) {
 //set routes
 var pages = require('./routes/pages.js');
 var adminPages = require('./routes/admin_pages.js');
+var adminCategories = require('./routes/admin_categories.js');
 
 app.use('/admin/pages', adminPages);
+app.use('/admin/categories', adminCategories);
 app.use('/', pages);
 
 
