@@ -19,8 +19,12 @@ var ProductSchema = mongoose.Schema(
             type: String,
             required: true
         },
-        sorting: {
+        price: {
             type: Number,
+            required: true
+        },
+        image: {
+            type: String
         }
     }
 );
