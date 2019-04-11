@@ -5,6 +5,7 @@ var config = require('./config/database');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var expressValidator = require('express-validator');
+var fileUpload = require('express-fileupload');
 
 
 //connect to db
@@ -27,6 +28,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //set global error variable
 app.locals.errors = null;
+
+
+//Express fileUpload middleware
+app.use(fileUpload());
 
 //body parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -69,9 +74,12 @@ app.use(function (req, res, next) {
 var pages = require('./routes/pages.js');
 var adminPages = require('./routes/admin_pages.js');
 var adminCategories = require('./routes/admin_categories.js');
+var adminProducts = require('./routes/admin_products.js');
 
 app.use('/admin/pages', adminPages);
 app.use('/admin/categories', adminCategories);
+app.use('/admin/products', adminProducts);
+
 app.use('/', pages);
 
 
