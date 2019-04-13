@@ -49,11 +49,12 @@ router.get('/add-product', function (req, res) {
 
 
 /* 
-*POST add page
+*POST add product
 */
-router.post('/add-page', function (req, res) {
+router.post('/add-product', function (req, res) {
     req.checkBody('title', 'Title must have a value').notEmpty();
-    req.checkBody('content', 'Content must have a value').notEmpty();
+    req.checkBody('desc', 'Description must have a value').notEmpty();
+    req.checkBody('price', 'Price must have a value').isDecimal();
 
 
     var title = req.body.title;
