@@ -43,7 +43,6 @@ router.post('/add-category', function (req, res) {
     var errors = req.validationErrors();
 
     if (errors) {
-        console.log('errors');
         res.render('admin/add_category', {
             errors: errors,
             title: title,

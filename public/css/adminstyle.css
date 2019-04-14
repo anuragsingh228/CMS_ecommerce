@@ -8,3 +8,7 @@
 #imgPreview{
     margin: 20px;
 }
+#noimage{
+    width: 100px;
+    height: 100px;
+}
