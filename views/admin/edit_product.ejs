@@ -47,6 +47,17 @@
     <input type="hidden" name="pimage" value="<%= image %>">
     <button class="btn btn-default">Submit</button>
 </form>
+<hr>
+<h3 class="page-header">Gallery</h3>
+<ul class="gallery">
+    <% galleryImages.forEach(function(image) { %>
+    <li>
+        <img src="/product_images/<%= id %>/gallery/thumbs/<%= image %>" alt="" srcset="">
+
+    </li>
+
+    <% }); %>
+</ul>
 <script>
     function readURL(input) {
         if (input.files && input.files[0]) {
