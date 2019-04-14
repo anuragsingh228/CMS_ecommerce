@@ -160,10 +160,11 @@ router.get('/edit-product/:id', function (req, res) {
                             errors: errors,
                             desc: p.desc,
                             categories: categories,
-                            categories: p.category.replace(/\s+/g, '-').toLowerCase(),
-                            price: p.price,
+                            category: p.category.replace(/\s+/g, '-').toLowerCase(),
+                            price: parseFloat(p.price).toFixed(2),
                             image: p.image,
-                            galleryImages: galleryImages
+                            galleryImages: galleryImages,
+                            id: p._id
                         });
                     }
                 })
